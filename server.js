@@ -1,8 +1,11 @@
 import express from "express";
 
 const app = express();
+app.use(express.json());
 
-app.get("/usuarios", (req, res) => {
+app.get("/usuarios/:bronw", (req, res) => {
+  console.log(req);
+
   res.send("Rota acessada com sucesso.");
 });
 
