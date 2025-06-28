@@ -3,14 +3,16 @@ import express from "express";
 const app = express();
 app.use(express.json());
 
-app.get("/usuarios/:bronw", (req, res) => {
-  console.log(req);
+const users = [];
 
-  res.send("Rota acessada com sucesso.");
+app.get("/usuarios", (req, res) => {
+  res.status(200).json(users);
 });
 
 app.post("/usuarios", (req, res) => {
-  res.send("Novo poste aqui.");
+  users.push(req.body);
+
+  res.status(201).json({ message: "Usuários criado com sucesso" });
 });
 
 app.listen(3000);
