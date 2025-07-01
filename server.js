@@ -42,4 +42,13 @@ app.put("/usuarios/:id", async (req, res) => {
   res.status(200).json(user);
 });
 
+app.delete("/usuarios/:id", async (req, res) => {
+  await prisma.user.delete({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.status(200).json({ message: "Usúarios deletado com sucesso!" });
+});
+
 app.listen(3000);
